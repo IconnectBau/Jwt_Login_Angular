@@ -1,24 +1,75 @@
 <div class="parent">
-    <div class="main">  	
+    <div class="main">
         <input type="checkbox" id="chk" aria-hidden="true">
-    
-            <div class="signup">
-                <form>
-                    <label for="chk" aria-hidden="true">Sign up</label>
-                    <input type="text" name="txt" placeholder="User name" required="">
-                    <input type="email" name="email" placeholder="Email" required="">
-                    <input type="password" name="pswd" placeholder="Password" required="">
-                    <button>Sign up</button>
-                </form>
-            </div>
-    
-            <div class="login">
-                <form>
-                    <label for="chk" aria-hidden="true">Login</label>
-                    <input type="email" name="EmailId" [(ngModel)]="loginObj.EmailId" placeholder="Email" required="">
-                    <input type="password" name="Password" [(ngModel)]="loginObj.Password" placeholder="Password" required="">
-                    <button (click)="onLogin()">Login</button>
-                </form>
-            </div>
+
+
+
+        <div class="signup">
+
+            <form #signUpForm="ngForm" (ngSubmit)="onSignUp(signUpForm.value)">
+                <label class="loginForm" for="chk" aria-hidden="true">Sign up</label>
+
+                <div class="form-group">
+                    <input type="text" name="studentID" #studentID="ngModel" placeholder="ID"
+                      [class.is-invalid]="studentID.invalid && studentID.touched" class="form-control " required
+                      ngModel>
+                    <small class="text-danger " [class.d-none]="studentID.valid || studentID.untouched">ID is
+                      required</small>
+                  </div>
+
+                <div class="form-group">
+
+                    <input type="password" name="password" placeholder="Password" #password="ngModel"
+                        [class.is-invalid]="password.invalid && password.touched" class="form-control " required
+                        ngModel>
+                    <small  class="text-danger  " [class.d-none]="password.valid || password.untouched">Password is
+                        required</small>
+                </div>
+
+                <input class="button" [disabled]="signUpForm.form.invalid" type="submit" value="Sign up" >
+
+
+
+            </form>
+        </div>
+
+
+
+
+
+        <div class="login">
+
+
+            <form #LoginForm="ngForm" (ngSubmit)="onLogin()">
+                <label for="chk" aria-hidden="true">Login</label>
+
+                <!-- <div class="form-group">
+                    <input type="text" name="studentID" #studentID2="ngModel" placeholder="ID"
+                      [class.is-invalid]="studentID2.invalid && studentID2.touched" class="form-control "   required
+                      ngModel>
+                    <small class="text-danger " [class.d-none]="studentID2.valid || studentID2.untouched">ID is
+                      required</small>
+                  </div>
+
+                <div class="form-group">
+
+                    <input type="password" name="password" placeholder="Password" #password2="ngModel"
+                        [class.is-invalid]="password2.invalid && password2.touched" class="form-control " required
+                        ngModel>
+                    <small  class="text-danger  " [class.d-none]="password2.valid || password2.untouched">Password is
+                        required</small>
+                </div> -->
+
+                <input type="text" name="studentID" [(ngModel)]="loginObj.studentID" placeholder="ID" required="">
+                <input type="password" name="password" [(ngModel)]="loginObj.password" placeholder="Password" required="">
+
+                <input class="button" [disabled]="LoginForm.form.invalid" type="submit" value="Login" >
+
+
+
+            </form>
+
+
+        </div>
     </div>
 </div>
