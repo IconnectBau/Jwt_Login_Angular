@@ -23,12 +23,13 @@ export class LoginComponent {
 
   onSignUp(user: {studentID: string, password: string}){
     console.log(user);
-    const headers = new HttpHeaders({'Login': 'BAUPortal'});
+    const headers = new HttpHeaders({'SignUp': 'BAUPortal'});
     this.http.post<{name: string}>(
-        'https://library-14e9e-default-rtdb.firebaseio.com/user.json', 
+        'https://loginpage-bc092-default-rtdb.firebaseio.com/users.json', 
         user, {headers: headers})
         .subscribe((res) => {
             console.log(res);
+            alert('Sign Up Success');
             this.router.navigateByUrl('/dashboard'); 
 
         }, (err) => {
@@ -43,11 +44,11 @@ export class LoginComponent {
  
    
     this.http.post<{name: string}>(
-        'https://library-14e9e-default-rtdb.firebaseio.com/user.json', 
+        'https://loginpage-bc092-default-rtdb.firebaseio.com/users.json', 
         this.loginObj)
         .subscribe((res) => {
             console.log(res);
-            alert('login Success');
+            alert('Login Success');
             this.router.navigateByUrl('/dashboard'); 
 
         }, (err) => {

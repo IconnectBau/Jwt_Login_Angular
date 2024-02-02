@@ -10,6 +10,11 @@ import { FormsModule }   from '@angular/forms';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 
 
+import { environment } from '../environments/environment';
+
+
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -22,6 +27,7 @@ import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
     AppRoutingModule,
     FormsModule,
     HttpClientModule,
+
 
 
   ],

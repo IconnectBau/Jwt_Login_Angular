@@ -1,5 +1,6 @@
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { map, catchError, throwError } from 'rxjs';
 import { user } from 'src/app/user';
 
@@ -11,7 +12,8 @@ import { user } from 'src/app/user';
 export class DashboardComponent implements OnInit {
 
   users: any[]=[];
-  constructor(private http: HttpClient){}
+  constructor(private http: HttpClient, private router: Router){}
+
   ngOnInit(): void {
   
     this.loadUsers();  
@@ -19,10 +21,15 @@ export class DashboardComponent implements OnInit {
   }
 
 
+  logOut(){
+    this.router.navigateByUrl('/login'); 
+  }
+
+
 
   private loadUsers(){
     this.http.get<{[key: string]:user}>(
-      'https://library-14e9e-default-rtdb.firebaseio.com/user.json'
+      'https://loginpage-bc092-default-rtdb.firebaseio.com/users.json'
     )
       .pipe(map((response) => {
         const data = [];

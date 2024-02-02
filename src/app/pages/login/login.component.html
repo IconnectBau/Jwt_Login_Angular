@@ -11,22 +11,22 @@
 
                 <div class="form-group">
                     <input type="text" name="studentID" #studentID="ngModel" placeholder="ID"
-                      [class.is-invalid]="studentID.invalid && studentID.touched" class="form-control " required
-                      ngModel>
+                        [class.is-invalid]="studentID.invalid && studentID.touched" class="form-control " required
+                        ngModel>
                     <small class="text-danger " [class.d-none]="studentID.valid || studentID.untouched">ID is
-                      required</small>
-                  </div>
+                        required</small>
+                </div>
 
                 <div class="form-group">
 
                     <input type="password" name="password" placeholder="Password" #password="ngModel"
                         [class.is-invalid]="password.invalid && password.touched" class="form-control " required
                         ngModel>
-                    <small  class="text-danger  " [class.d-none]="password.valid || password.untouched">Password is
+                    <small class="text-danger  " [class.d-none]="password.valid || password.untouched">Password is
                         required</small>
                 </div>
 
-                <input class="button" [disabled]="signUpForm.form.invalid" type="submit" value="Sign up" >
+                <input class="button" [disabled]="signUpForm.form.invalid" type="submit" value="Sign up">
 
 
 
@@ -43,27 +43,26 @@
             <form #LoginForm="ngForm" (ngSubmit)="onLogin()">
                 <label for="chk" aria-hidden="true">Login</label>
 
-                <!-- <div class="form-group">
+                <div class="form-group">
                     <input type="text" name="studentID" #studentID2="ngModel" placeholder="ID"
-                      [class.is-invalid]="studentID2.invalid && studentID2.touched" class="form-control "   required
-                      ngModel>
+                        [class.is-invalid]="studentID2.invalid && studentID2.touched" class="form-control " required
+                        ngModel>
                     <small class="text-danger " [class.d-none]="studentID2.valid || studentID2.untouched">ID is
-                      required</small>
-                  </div>
+                        required</small>
+                </div>
 
                 <div class="form-group">
 
                     <input type="password" name="password" placeholder="Password" #password2="ngModel"
                         [class.is-invalid]="password2.invalid && password2.touched" class="form-control " required
                         ngModel>
-                    <small  class="text-danger  " [class.d-none]="password2.valid || password2.untouched">Password is
+                    <small class="text-danger  " [class.d-none]="password2.valid || password2.untouched">Password is
                         required</small>
-                </div> -->
+                </div>
 
-                <input type="text" name="studentID" [(ngModel)]="loginObj.studentID" placeholder="ID" required="">
-                <input type="password" name="password" [(ngModel)]="loginObj.password" placeholder="Password" required="">
 
-                <input class="button" [disabled]="LoginForm.form.invalid" type="submit" value="Login" >
+
+                <input class="button" [disabled]="LoginForm.form.invalid" type="submit" value="Login">
 
 
 
