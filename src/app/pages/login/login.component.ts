@@ -1,6 +1,6 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Component, ViewChild } from '@angular/core';
-import {  Router } from '@angular/router';
+import { Router } from '@angular/router';
 import { NgForm } from '@angular/forms';
 import { Subject } from 'rxjs';
 
@@ -17,54 +17,44 @@ export class LoginComponent {
     "studentID": "",
     "password": ""
   };
-  constructor(private http: HttpClient, private router: Router){}
+
+  constructor(private http: HttpClient, private router: Router) { }
 
   error = new Subject<string>();
 
-  onSignUp(user: {studentID: string, password: string}){
+  onSignUp(user: { studentID: string, password: string }) {
     console.log(user);
-    const headers = new HttpHeaders({'SignUp': 'BAUPortal'});
-    this.http.post<{name: string}>(
-        'https://loginpage-bc092-default-rtdb.firebaseio.com/users.json', 
-        user, {headers: headers})
-        .subscribe((res) => {
-            console.log(res);
-            alert('Sign Up Success');
-            this.router.navigateByUrl('/dashboard'); 
+    const headers = new HttpHeaders({ 'SignUp': 'BAUPortal' });
+    this.http.post<{ name: string }>(
+      'https://loginpage-bc092-default-rtdb.firebaseio.com/users.json',
+      user, { headers: headers })
+      .subscribe((res) => {
+        console.log(res);
+        alert('Sign Up Success');
+        this.router.navigateByUrl('/dashboard');
 
-        }, (err) => {
-            this.error.next(err.message);
-        });
-      
-}
+      }, (err) => {
+        this.error.next(err.message);
+      });
 
-  
-  onLogin() {
+  }
 
- 
-   
-    this.http.post<{name: string}>(
-        'https://loginpage-bc092-default-rtdb.firebaseio.com/users.json', 
-        this.loginObj)
-        .subscribe((res) => {
-            console.log(res);
-            alert('Login Success');
-            this.router.navigateByUrl('/dashboard'); 
 
-        }, (err) => {
-            this.error.next(err.message);
-        });
+  onLogin(user: { studentID: string, password: string }) {
+    console.log(user);
+    const headers = new HttpHeaders({ 'Login': 'BAUPortal' });
+    this.http.post<{ name: string }>(
+      'https://loginpage-bc092-default-rtdb.firebaseio.com/users.json',
+      user, { headers: headers })
+      .subscribe((res) => {
+        console.log(res);
+        alert('Login Success');
+        this.router.navigateByUrl('/dashboard');
 
-    // this.http.post('https://library-14e9e-default-rtdb.firebaseio.com/user.json', this.loginObj).subscribe((res:any)=>{
-    //   console.log(res);
-    //   if(res.result) {
-    //     alert('login Success');
-    //     localStorage.setItem('loginTOken', res.data.token);
-    //     this.router.navigateByUrl('/dashboard'); 
-    //   } else {
-    //     alert(res.message);
-    //   }
-    // })
+      }, (err) => {
+        this.error.next(err.message);
+      });
+
   }
 
 

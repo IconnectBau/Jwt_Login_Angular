@@ -40,7 +40,7 @@
         <div class="login">
 
 
-            <form #LoginForm="ngForm" (ngSubmit)="onLogin()">
+            <form #LoginForm="ngForm" (ngSubmit)="onLogin(LoginForm.value)">
                 <label for="chk" aria-hidden="true">Login</label>
 
                 <div class="form-group">

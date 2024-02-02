@@ -11,42 +11,42 @@ import { user } from 'src/app/user';
 })
 export class DashboardComponent implements OnInit {
 
-  users: any[]=[];
-  constructor(private http: HttpClient, private router: Router){}
+  users: any[] = [];
+  constructor(private http: HttpClient, private router: Router) { }
 
   ngOnInit(): void {
-  
-    this.loadUsers();  
+
+    this.loadUsers();
     console.log(this.users)
   }
 
 
-  logOut(){
-    this.router.navigateByUrl('/login'); 
+  logOut() {
+    this.router.navigateByUrl('/login');
   }
 
 
 
-  private loadUsers(){
-    this.http.get<{[key: string]:user}>(
+  private loadUsers() {
+    this.http.get<{ [key: string]: user }>(
       'https://loginpage-bc092-default-rtdb.firebaseio.com/users.json'
     )
       .pipe(map((response) => {
         const data = [];
-       
-        for(const key in response){
-          if(response.hasOwnProperty(key)){
-            data.push({...response[key], id:key})
-           
+
+        for (const key in response) {
+          if (response.hasOwnProperty(key)) {
+            data.push({ ...response[key], id: key })
+
 
           }
-          
+
         }
         return data;
       }))
       .subscribe((data) => {
-        this.users=data;
-    
+        this.users = data;
+
       })
   }
 
